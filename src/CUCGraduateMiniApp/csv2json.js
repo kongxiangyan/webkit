@@ -1,5 +1,6 @@
 const path = require('path')
-const csvFilePath = './list-20200625.csv'
+const filename = 'student-data-20200702'
+const csvFilePath = `./${filename}.csv`
 const c2j = require('csvtojson')
 const fs = require('fs')
 
@@ -8,7 +9,7 @@ c2j().fromFile(path.resolve(__dirname, csvFilePath)).then(jsonObj => {
   jsonObj.map(item => {
     jsonText = jsonText + JSON.stringify(item) + '\n'
   })
-  fs.writeFile(path.resolve(__dirname, 'list-20200625.json'), jsonText, 'utf-8', (err) => {
+  fs.writeFile(path.resolve(__dirname, `${filename}.json`), jsonText, 'utf-8', (err) => {
     if(err) {
       return console.log(err);
     }
